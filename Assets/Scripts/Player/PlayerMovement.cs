@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
 	private bool isRunning;
 
 	private Ray ray;
+
+    private float mouseX;
+    private float mouseY;
 	void Start()
 	{
 		animator = GetComponent<Animator>();
@@ -29,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
 	}
 	void Update()
     {
+        mouseX = Input.mousePosition.x;
+        mouseY = Input.mousePosition.y;
+
+
         targetVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         movementVector = MoveTowardTarget(targetVector);
 
@@ -38,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             RotateTowardMovementVector(movementVector);
         }
         if(rotateTowardMouse){
-            target = RotateFromMouseVector();
+            RotateFromMouseVector();
         }
 
         CheckAnimatorState();
@@ -46,21 +53,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckAnimatorState()
     {
-        isRunning = targetVector != Vector3.zero;
+        // get mouse position
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // discard y
+        mousePos = new Vector3(mousePos.x, 0, mousePos.z);
   //      animator.SetBool("isRunning", isRunning);
-        if(targetVector != Vector3.zero && movementVector != Vector3.zero)
-            Debug.Log($"targetVector: {targetVector} movementVector:{movementVector} target:{target}");
+        Debug.Log($"targetVector: {targetVector} mouse:{mousePos} ");
+
+
 /*
         if(targetVector.z < 0 && movementVector.z < 0){
             animator.SetBool("isRunningBackwards", true);
         }else{
             animator.SetBool("isRunningBackwards", false);
         }*/
+        isRunning = targetVector != Vector3.zero;
 
         animator.SetFloat("xMov", targetVector.x);
         animator.SetFloat("zMov", targetVector.z);
-        animator.SetFloat("xSeePoint", target.normalized.x);
-        animator.SetFloat("zSeePoint", target.normalized.z);
+        animator.SetFloat("xSeePoint", movementVector.normalized.x);
+        animator.SetFloat("zSeePoint", movementVector.normalized.z);
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
@@ -68,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(isRunning){
             //SI APRIETO A
-            if (Input.GetKey(KeyCode.W) && target.normalized.x < 0)
+            if (Input.GetKey(KeyCode.W) && movementVector.normalized.x < 0)
             {
                 animator.Play("RunForwards");
             }else{
@@ -106,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
   //      animator.SetBool("isRunning", isRunning);
     }
 
-    private Vector3 RotateFromMouseVector()
+    private void RotateFromMouseVector()
     {
         ray = cameraPlayer.ScreenPointToRay(Input.mousePosition);
 
@@ -115,9 +128,7 @@ public class PlayerMovement : MonoBehaviour
             target = hitInfo.point;
             target.y = transform.position.y;
             transform.LookAt(target);
-            return target;
         }
-        return Vector3.zero;
     }
 
     private void RotateTowardMovementVector(Vector3 movementDirection)
