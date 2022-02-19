@@ -1730,6 +1730,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1062635117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4328418547369563932, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
+  m_PrefabInstance: {fileID: 4328418546394062856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1126549403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,9 +2352,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 149964, guid: 3328d5d74c357064087a925505b79caf, type: 3}
     - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
+      propertyPath: cooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 1062635117}
+    - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
+      propertyPath: arrowPrefab
+      value: 
+      objectReference: {fileID: 149964, guid: 3328d5d74c357064087a925505b79caf, type: 3}
     - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: cameraPlayer
       value: 
@@ -2360,7 +2377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: rotateTowardMouse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4328418546475053737, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: m_TagString

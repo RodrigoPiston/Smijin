@@ -15,7 +15,10 @@ public class PlayerMovement : MonoBehaviour
  	private Rigidbody rb;
 	private Animator animator;
 
-	private Vector3 movementVector;
+    private float cameraAxisX;
+
+
+    private Vector3 movementVector;
 	private Vector3 targetVector;
 	private Vector3 target;
 	private bool isRunning;
@@ -27,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 	void Start()
 	{
 		animator = GetComponent<Animator>();
-		rb = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody>(); 
 
 	}
 	void Update()
@@ -35,18 +38,27 @@ public class PlayerMovement : MonoBehaviour
         mouseX = Input.mousePosition.x;
         mouseY = Input.mousePosition.y;
 
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical"); 
 
-        targetVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        targetVector = new Vector3(horizontalInput, 0, verticalInput); 
+        targetVector.Normalize();
+
         movementVector = MoveTowardTarget(targetVector);
 
-        //rotateTowardMouse = Input.GetKey(KeyCode.Mouse0);
+        if (targetVector != Vector3.zero)
+        {
+            transform.forward = movementVector;
+        }
+
+        /*//rotateTowardMouse = Input.GetKey(KeyCode.Mouse0);
         if (!rotateTowardMouse)
         {
             RotateTowardMovementVector(movementVector);
         }
         if(rotateTowardMouse){
             RotateFromMouseVector();
-        }
+        }*/
 
         CheckAnimatorState();
     }
@@ -59,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         // discard y
         mousePos = new Vector3(mousePos.x, 0, mousePos.z);
   //      animator.SetBool("isRunning", isRunning);
-        Debug.Log($"targetVector: {targetVector} mouse:{mousePos} ");
+        //Debug.Log($"targetVector: {targetVector} mouse:{mousePos} ");
 
 
 /*
@@ -68,18 +80,35 @@ public class PlayerMovement : MonoBehaviour
         }else{
             animator.SetBool("isRunningBackwards", false);
         }*/
-        isRunning = targetVector != Vector3.zero;
+        //isRunning = targetVector != Vector3.zero;
 
-        animator.SetFloat("xMov", targetVector.x);
-        animator.SetFloat("zMov", targetVector.z);
-        animator.SetFloat("xSeePoint", movementVector.normalized.x);
-        animator.SetFloat("zSeePoint", movementVector.normalized.z);
+        //animator.SetFloat("xMov", targetVector.x);
+        //animator.SetFloat("zMov", targetVector.z);
+        //animator.SetFloat("xSeePoint", movementVector.normalized.x);
+        //animator.SetFloat("zSeePoint", movementVector.normalized.z);
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
-            //SI APRIETO W
+            animator.SetBool("isRunning", true); 
         }
-        if(isRunning){
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            ray = cameraPlayer.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
+            {
+                target = hitInfo.point;
+                target.y = transform.position.y;
+                transform.LookAt(target);
+            }
+        }
+
+        /*if(isRunning){
             //SI APRIETO A
             if (Input.GetKey(KeyCode.W) && movementVector.normalized.x < 0)
             {
@@ -87,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             }else{
                 animator.Play("RunBackwards");
             }
-        }
+        }*/
         /*
         //SI APRIETO D
         if (Input.GetKey(KeyCode.S))
@@ -133,9 +162,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotateTowardMovementVector(Vector3 movementDirection)
     {
+        /*
         if(movementDirection.magnitude == 0) { return; }
         var rotation = Quaternion.LookRotation(movementDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);*/
+        
     }
 
     private Vector3 MoveTowardTarget(Vector3 targetVector)

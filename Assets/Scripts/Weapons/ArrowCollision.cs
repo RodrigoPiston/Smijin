@@ -6,6 +6,9 @@ public class ArrowCollision : MonoBehaviour
 {
 	[SerializeField] public GameObject effectOnHit ;
 	[SerializeField] public  float effectDuration = 2f ;
+
+	private float timePass;
+	private float maxTimeArrow = 5;
 	private void OnCollisionEnter(Collision other) {
 		Debug.Log(other.gameObject.name);
 		if(!other.gameObject.name.Equals("Player")){
@@ -14,6 +17,16 @@ public class ArrowCollision : MonoBehaviour
 			//Destroy(expl,effectDuration); // delete the explosion after 3 seconds
 			Destroy(gameObject);
 		}
+	}
+
+	private void Update()
+	{
+		timePass += Time.deltaTime;
+        if (timePass > maxTimeArrow)
+        {
+			Destroy(gameObject);
+			timePass = 0;
+        }
 	}
 
 }

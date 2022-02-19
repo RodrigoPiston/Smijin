@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-     // Start is called before the first frame update
+    //Start is called before the first frame update
     [Header("Arrow")]
 
     [SerializeField] GameObject arrowPrefab;
@@ -17,32 +17,31 @@ public class PlayerBehavior : MonoBehaviour
     private float timePass = 0;
 
     private GameObject newParentObject;
-	private float holdDownStartTime;
-
+    private float holdDownStartTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        newParentObject  = GameObject.Find("DynamicArrows");
+        newParentObject = GameObject.Find("DynamicArrows");
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         ShootArrow();
     }
 
     private void ShootArrow()
     {
-        
+
         //SI APRIETO E
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
             holdDownStartTime = Time.time;
-        	InstantiateNewArrow();
+            InstantiateNewArrow();
             canShoot = false;
         }
-        
+
         if (!canShoot)
         {
             timePass += Time.deltaTime;
@@ -54,16 +53,17 @@ public class PlayerBehavior : MonoBehaviour
             canShoot = true;
         }
     }
-    
-	private void InstantiateNewArrow()
-	{
-		GameObject newArrow = Instantiate(arrowPrefab, shootPoint.transform.position,shootPoint.transform.rotation);// PROYECTILES
-		newArrow.AddComponent<Rigidbody>();
-		newArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-		newArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-		newArrow.GetComponent<Rigidbody>().AddForce(transform.forward * arrowPower, ForceMode.VelocityChange);
-		if(newParentObject != null){
-			newArrow.transform.parent = newParentObject.transform;
-		}
-	}
+
+    private void InstantiateNewArrow()
+    {
+        GameObject newArrow = Instantiate(arrowPrefab, shootPoint.transform.position, shootPoint.transform.rotation);// PROYECTILES
+        newArrow.AddComponent<Rigidbody>();
+        newArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        newArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+        newArrow.GetComponent<Rigidbody>().AddForce(transform.forward * arrowPower, ForceMode.VelocityChange);
+        if (newParentObject != null)
+        {
+            newArrow.transform.parent = newParentObject.transform;
+        }
+    }
 }
