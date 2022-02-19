@@ -18,17 +18,21 @@ public class PlayerMovement : MonoBehaviour
 	private Vector3 movementVector;
 	private Vector3 targetVector;
 	private Vector3 target;
+	private bool isRunning;
 
 	private Ray ray;
 	void Start()
 	{
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody>();
+
 	}
 	void Update()
-	{
-		targetVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-		movementVector = MoveTowardTarget(targetVector);
+    {
+        targetVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movementVector = MoveTowardTarget(targetVector);
+
+        CheckAnimatorState();
 
         if (!rotateTowardMouse)
         {
@@ -38,9 +42,16 @@ public class PlayerMovement : MonoBehaviour
         {
             RotateFromMouseVector();
         }
-	}
+    }
 
-	private void RotateFromMouseVector()
+    private void CheckAnimatorState()
+    {
+        isRunning = targetVector != Vector3.zero;
+        Debug.Log(isRunning);
+        animator.SetBool("isRunning", isRunning);
+    }
+
+    private void RotateFromMouseVector()
     {
         ray = cameraPlayer.ScreenPointToRay(Input.mousePosition);
 
