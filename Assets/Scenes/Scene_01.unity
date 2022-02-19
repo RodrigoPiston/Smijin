@@ -296,6 +296,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0aa851515cd3747d6b3b3e461199a2ed, type: 2}
+    - target: {fileID: 4328418546465633033, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
     - target: {fileID: 4328418546474824565, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: m_Name
       value: Player
@@ -338,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4328418546474927731, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: rotateTowardMouse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4328418546475014523, guid: 567346fcae5be8e40a7c85c7724c4156, type: 3}
       propertyPath: m_IsActive
