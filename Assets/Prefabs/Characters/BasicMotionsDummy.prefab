@@ -460,6 +460,8 @@ Transform:
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_Children:
   - {fileID: 4452175843212108}
+  - {fileID: 4395802439680920}
+  - {fileID: 4273334645044824}
   m_Father: {fileID: 4160649102049748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -848,12 +850,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387996446399804}
-  m_LocalRotation: {x: 0.023842068, y: 0.9996179, z: 0.005557301, w: 0.012840516}
-  m_LocalPosition: {x: -0.06463126, y: -0.07962754, z: 0.005134098}
-  m_LocalScale: {x: 1.0000001, y: 1.0000104, z: 1.0000029}
+  m_LocalRotation: {x: 0.023621846, y: 0.99847084, z: 0.0064297225, w: 0.049564507}
+  m_LocalPosition: {x: 0.11459462, y: -0.079627566, z: 0.013586866}
+  m_LocalScale: {x: 1, y: 1.0000104, z: 1}
   m_Children:
   - {fileID: 4420049538331486}
-  m_Father: {fileID: 4160649102049748}
+  m_Father: {fileID: 4375289091670556}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404603022252134
@@ -1721,8 +1723,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4375289091670556}
-  - {fileID: 4395802439680920}
-  - {fileID: 4273334645044824}
   m_Father: {fileID: 4269252781762564}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1749,12 +1749,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926555816452016}
-  m_LocalRotation: {x: -0.0238419, y: 0.9996178, z: -0.005559474, w: 0.012841632}
-  m_LocalPosition: {x: -0.06463133, y: 0.07962755, z: 0.005134096}
-  m_LocalScale: {x: 1.0000001, y: 1.0000104, z: 1.0000029}
+  m_LocalRotation: {x: -0.023621414, y: 0.9984708, z: -0.0064318106, w: 0.04956564}
+  m_LocalPosition: {x: 0.11459463, y: 0.07962746, z: 0.013586866}
+  m_LocalScale: {x: 1, y: 1.0000104, z: 1}
   m_Children:
   - {fileID: 4355207500787202}
-  m_Father: {fileID: 4160649102049748}
+  m_Father: {fileID: 4375289091670556}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927644908031342

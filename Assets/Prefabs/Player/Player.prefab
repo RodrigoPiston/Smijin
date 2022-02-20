@@ -255,9 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPlayer: {fileID: 0}
-  rotateTowardMouse: 1
   movementSpeed: 10
-  rotationSpeed: 2
 --- !u!114 &4328418546474824566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,9 +2788,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4328418546475300255}
     m_Modifications:
+    - target: {fileID: 1212293030815622, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1260597861999642, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
       propertyPath: m_Name
-      value: BasicMotionsDummy
+      value: SkeletonLower
       objectReference: {fileID: 0}
     - target: {fileID: 4759721911903040, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
       propertyPath: m_RootOrder
@@ -2838,6 +2840,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4408529143413910321, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408529143427508875, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01f35d31dbf9c424e904e4d9708c49b8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
 --- !u!4 &6278702203077475459 stripped

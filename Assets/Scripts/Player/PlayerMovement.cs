@@ -7,31 +7,23 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Camera cameraPlayer;
 	
-    [SerializeField] private bool rotateTowardMouse;
-
     [SerializeField] private float movementSpeed;
     
-    [SerializeField] private float rotationSpeed;
- 	private Rigidbody rb;
 	private Animator animator;
-
-    private float cameraAxisX;
-
-
+ 	private Rigidbody rb;
     private Vector3 movementVector;
 	private Vector3 targetVector;
 	private Vector3 target;
 	private bool isRunning;
-
 	private Ray ray;
-
     private float mouseX;
     private float mouseY;
+    Vector2 mousePosFromCenter; 
+
 	void Start()
 	{
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody>(); 
-
 	}
 	void Update()
     {
@@ -50,102 +42,52 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.forward = movementVector;
         }
-
-        /*//rotateTowardMouse = Input.GetKey(KeyCode.Mouse0);
-        if (!rotateTowardMouse)
-        {
-            RotateTowardMovementVector(movementVector);
-        }
-        if(rotateTowardMouse){
-            RotateFromMouseVector();
-        }*/
+        RotateFromMouseVector();
 
         CheckAnimatorState();
     }
 
     private void CheckAnimatorState()
     {
-        // get mouse position
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // discard y
-        mousePos = new Vector3(mousePos.x, 0, mousePos.z);
-  //      animator.SetBool("isRunning", isRunning);
-        //Debug.Log($"targetVector: {targetVector} mouse:{mousePos} ");
-
-
-/*
-        if(targetVector.z < 0 && movementVector.z < 0){
-            animator.SetBool("isRunningBackwards", true);
-        }else{
-            animator.SetBool("isRunningBackwards", false);
-        }*/
-        //isRunning = targetVector != Vector3.zero;
-
-        //animator.SetFloat("xMov", targetVector.x);
-        //animator.SetFloat("zMov", targetVector.z);
-        //animator.SetFloat("xSeePoint", movementVector.normalized.x);
-        //animator.SetFloat("zSeePoint", movementVector.normalized.z);
-
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        mousePosFromCenter = new Vector2(mouseX - Screen.width/2, Screen.height/2 - mouseY).normalized;
+        
+        Debug.Log($"mousePosFromCenter:{mousePosFromCenter}");
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            animator.SetBool("isRunning", true); 
+            if ((Input.GetKey(KeyCode.S) && mousePosFromCenter.y < 0) || (Input.GetKey(KeyCode.W) && mousePosFromCenter.y > 0)
+                || (Input.GetKey(KeyCode.D) && mousePosFromCenter.x < 0) || (Input.GetKey(KeyCode.A) && mousePosFromCenter.x > 0)
+            )
+            {
+                animator.SetBool("isRunningBackwards", true);
+            }
+            else
+            {
+                animator.SetBool("isRunningBackwards", false);
+            }
+            ShootAnim(1,true);
         }
         else
         {
-            animator.SetBool("isRunning", false);
+            ShootAnim(0,false);
+            animator.SetBool("isRunningBackwards", false); 
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            ray = cameraPlayer.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
+        if(!animator.GetBool("isRunningBackwards")){
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
-                target = hitInfo.point;
-                target.y = transform.position.y;
-                transform.LookAt(target);
+                animator.SetBool("isRunning", true); 
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
             }
         }
+    }
 
-        /*if(isRunning){
-            //SI APRIETO A
-            if (Input.GetKey(KeyCode.W) && movementVector.normalized.x < 0)
-            {
-                animator.Play("RunForwards");
-            }else{
-                animator.Play("RunBackwards");
-            }
-        }*/
-        /*
-        //SI APRIETO D
-        if (Input.GetKey(KeyCode.S))
-        {
-            MovePlayer(Vector3.back);
-        }
-
-        // -xMov | -xSeePoint: RunBackwards
-        if(targetVector.x < 0 && target.normalized.x < 0){
-            animator.SetBool("isRunningBackwards", true);
-            animator.SetBool("isRunning", false);
-        // xMov  | xSeePoint: Run
-        }else if(targetVector.x > 0 && target.normalized.x > 0){
-            animator.SetBool("isRunning", true);
-            animator.SetBool("isRunningBackwards", false);
-        }
-        
-        // -zMov | -zSeePoint: RunBackwards
-        if(targetVector.z < 0 && target.normalized.z < 0){
-            animator.SetBool("isRunningBackwards", true);
-            animator.SetBool("isRunning", false);
-        // zMov  | zSeePoint: Run
-        }else if(targetVector.z > 0 && target.normalized.z > 0){
-            animator.SetBool("isRunningBackwards", false);
-            animator.SetBool("isRunning", true);
-        }*/
-
-//        isRunning = targetVector != Vector3.zero;
-  //      animator.SetBool("isRunning", isRunning);
+    private void ShootAnim(int weight,bool value)
+    {
+        animator.SetLayerWeight(animator.GetLayerIndex("UpperBodyMovement"), weight);
+        animator.SetBool("isShotting", value);
     }
 
     private void RotateFromMouseVector()
@@ -158,15 +100,6 @@ public class PlayerMovement : MonoBehaviour
             target.y = transform.position.y;
             transform.LookAt(target);
         }
-    }
-
-    private void RotateTowardMovementVector(Vector3 movementDirection)
-    {
-        /*
-        if(movementDirection.magnitude == 0) { return; }
-        var rotation = Quaternion.LookRotation(movementDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);*/
-        
     }
 
     private Vector3 MoveTowardTarget(Vector3 targetVector)
