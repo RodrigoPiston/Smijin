@@ -14,8 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 	private Animator animator;
     private Ray ray;
-    private float gravity = 9.85f;
+    private float gravity = 9.8f;
     private float velocityZ;
+    private float vSpeed;
     private float velocityX;
     void Start(){
         crPlayer = GetComponent<CharacterController>();
@@ -24,15 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Move();
         Rotate();
-        ApplyGravity();
         Animate();
+        ApplyGravity();
+        Move();
     }
 
     private void ApplyGravity()
     {
-        // Apply gravity
         moveDirection.y -= gravity * Time.deltaTime;
     }
 
