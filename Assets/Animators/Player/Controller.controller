@@ -36,8 +36,7 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 80, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
-  m_EntryTransitions:
-  - {fileID: 2415698986120978210}
+  m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 40, y: 20, z: 0}
@@ -113,7 +112,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 0e8a004b2959c41449659065c3ead63d, type: 3}
+  m_Motion: {fileID: 7400000, guid: 805576d64ae34224b80884c8046e5fe0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -197,7 +196,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 110281790}
+  m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -1058,7 +1057,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400012, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: -1, y: -1}
+    m_Position: {x: -0.99, y: -0.99}
     m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
@@ -1066,7 +1065,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400004, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: 1, y: 1}
+    m_Position: {x: 0.99, y: 0.99}
     m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
@@ -1074,16 +1073,16 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400010, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: 0, y: -1}
-    m_TimeScale: 1
+    m_Position: {x: 0, y: -0.99}
+    m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400006, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: -1, y: 0}
-    m_TimeScale: 1
+    m_Position: {x: -0.99, y: 0}
+    m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
     m_Mirror: 0
@@ -1091,30 +1090,30 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: 223599a26bad72c4699d7726de0a7713, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
+    m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400008, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: 1, y: 0}
-    m_TimeScale: 1
+    m_Position: {x: 0.99, y: 0}
+    m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: 0, y: 1}
-    m_TimeScale: 1
+    m_Position: {x: 0, y: 0.99}
+    m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400002, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: -1, y: 1}
+    m_Position: {x: -0.99, y: 0.99}
     m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
@@ -1122,7 +1121,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400014, guid: 46d5b47e60163f148ada32ff97c7aa32, type: 3}
     m_Threshold: 1
-    m_Position: {x: 1, y: -1}
+    m_Position: {x: 0.99, y: -0.99}
     m_TimeScale: 1.4
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityZ
@@ -1174,20 +1173,3 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1109 &2415698986120978210
-AnimatorTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isShooting
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -4762483551945184261}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 1
