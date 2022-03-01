@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Arrow")]
 
     [SerializeField] GameObject arrowPrefab;
+    [SerializeField] GameObject trailArrowPrefab;
 
     [SerializeField] GameObject shootPoint;
 
@@ -57,7 +58,9 @@ public class PlayerBehavior : MonoBehaviour
     private void InstantiateNewArrow()
     {
         GameObject newArrow = Instantiate(arrowPrefab, shootPoint.transform.position, shootPoint.transform.rotation);// PROYECTILES
+        GameObject newTrail = Instantiate(trailArrowPrefab, newArrow.transform.position, newArrow.transform.rotation);// PROYECTILES
         newArrow.AddComponent<Rigidbody>();
+        newTrail.transform.SetParent(newArrow.transform);
         newArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         newArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
         newArrow.GetComponent<Rigidbody>().AddForce(transform.forward * arrowPower, ForceMode.VelocityChange);
