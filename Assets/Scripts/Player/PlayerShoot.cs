@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehavior : MonoBehaviour
+public class PlayerShoot : MonoBehaviour
 {
     //Start is called before the first frame update
     [Header("Arrow")]
@@ -20,13 +21,20 @@ public class PlayerBehavior : MonoBehaviour
     private GameObject newParentObject;
     private float holdDownStartTime;
 
-    // Start is called before the first frame update
+    private int shootAnimation;
+    private Animator animator;
+    private float animationPlayTransition = 0.13f;
+
+    private void Awake() {
+        animator = GetComponent<Animator>();
+        shootAnimation = Animator.StringToHash("Shoot_01");
+    }
+
     void Start()
     {
         newParentObject = GameObject.Find("DynamicArrows");
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         ShootArrow();
@@ -39,6 +47,7 @@ public class PlayerBehavior : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
             holdDownStartTime = Time.time;
+            PlayShootAnimation();
             InstantiateNewArrow();
             canShoot = false;
         }
@@ -53,6 +62,11 @@ public class PlayerBehavior : MonoBehaviour
             timePass = 0;
             canShoot = true;
         }
+    }
+
+    private void PlayShootAnimation()
+    {
+        animator.CrossFade(shootAnimation,animationPlayTransition);
     }
 
     private void InstantiateNewArrow()

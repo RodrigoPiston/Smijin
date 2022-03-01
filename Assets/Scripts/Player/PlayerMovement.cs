@@ -2,31 +2,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Camera cameraPlayer;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] public float speed = 6f;
     [SerializeField] float angleRotation = 45;
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] float yMove = 0.1f;
+
     private CharacterController crPlayer;
     private Vector3 target;
     private Vector3 moveDirection;
 	private Animator animator;
     private Ray ray;
+    private CinemachineComponentBase componentBase;
+
     private float gravity = -9.8f;
     private float velocityZ;
     private float vSpeed;
     private float velocityX;
+    private float maxZoomOut = 18;
+    private float maxZoomIn = 5;
+    private float zoom = 13;
+
+    private int shotAnimation;
     private bool groundedPlayer;
 
-    void Start(){
+    private void Awake() {
         crPlayer = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
-    }
+        shotAnimation = Animator.StringToHash("Shoot_01");
+        componentBase = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+    } 
 
-    void Update()
+    private void Update()
     {
         groundedPlayer = crPlayer.isGrounded;
         if (groundedPlayer && moveDirection.y < 0)
@@ -38,6 +49,20 @@ public class PlayerMovement : MonoBehaviour
         Animate();
         ApplyGravity();
         Move();
+        ZoomCamera();
+    }
+
+    private void ZoomCamera()
+    {
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel") * -1;
+        if ((scrollWheel < 0 && zoom > maxZoomIn ) || (scrollWheel > 0 &&  zoom < maxZoomOut ) ) // forward
+        {
+            zoom += scrollWheel * 10;
+            Debug.Log($"scrollWheel: {scrollWheel} zoom:{zoom}");
+        }
+        if (componentBase is CinemachineFramingTransposer){
+            (componentBase as CinemachineFramingTransposer).m_CameraDistance = zoom ; 
+        }
     }
 
     private void ApplyGravity()
