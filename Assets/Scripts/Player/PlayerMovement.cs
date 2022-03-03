@@ -10,13 +10,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float speed = 6f;
     [SerializeField] float angleRotation = 45;
     [SerializeField] float turnSmoothTime = 0.1f;
+<<<<<<< HEAD
     [SerializeField] float yMove = 0.1f;
 
+=======
+>>>>>>> parent of 964786e (Se arreglo la gravedaa)
     private CharacterController crPlayer;
     private Vector3 target;
     private Vector3 moveDirection;
 	private Animator animator;
     private Ray ray;
+<<<<<<< HEAD
     private CinemachineComponentBase componentBase;
 
     private float gravity = -9.8f;
@@ -31,6 +35,13 @@ public class PlayerMovement : MonoBehaviour
     private bool groundedPlayer;
 
     private void Awake() {
+=======
+    private float gravity = 9.8f;
+    private float velocityZ;
+    private float vSpeed;
+    private float velocityX;
+    void Start(){
+>>>>>>> parent of 964786e (Se arreglo la gravedaa)
         crPlayer = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
         shotAnimation = Animator.StringToHash("Shoot_01");
@@ -39,12 +50,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        groundedPlayer = crPlayer.isGrounded;
-        if (groundedPlayer && moveDirection.y < 0)
-        {
-            vSpeed = 0f;
-        }
-
         Rotate();
         Animate();
         ApplyGravity();
@@ -67,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyGravity()
     {
-        vSpeed += gravity *Time.deltaTime;
+        moveDirection.y -= gravity * Time.deltaTime;
     }
 
     private void Animate()
@@ -83,15 +88,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        moveDirection = new Vector3(horizontal, 0, vertical).normalized;
-        moveDirection.y += vSpeed;
+        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
         if (moveDirection.magnitude >= 0.1f)
         {
             // -- Se corrije la dirección del player con la rotación de la camara para que respete el horizontal/vertical
             moveDirection = Quaternion.Euler(0, cameraPlayer.gameObject.transform.eulerAngles.y, 0) * moveDirection;
             moveDirection.Normalize();
+            crPlayer.Move(moveDirection * speed * Time.deltaTime);
         }
-        crPlayer.Move(moveDirection * speed * Time.deltaTime);
     }
 
     private void Rotate()
