@@ -14320,18 +14320,29 @@ AnimationClip:
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 0.70000005
-    m_OrientationOffsetY: 90
+    m_OrientationOffsetY: -90
+<<<<<<< HEAD
+    m_Level: -1.01
+=======
     m_Level: 0
+>>>>>>> parent of 964786e (Se arreglo la gravedaa)
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
     m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 1
     m_LoopBlendPositionY: 0
+<<<<<<< HEAD
+    m_LoopBlendPositionXZ: 1
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 0
+    m_KeepOriginalPositionXZ: 1
+=======
     m_LoopBlendPositionXZ: 0
-    m_KeepOriginalOrientation: 1
+    m_KeepOriginalOrientation: 0
     m_KeepOriginalPositionY: 1
     m_KeepOriginalPositionXZ: 0
+>>>>>>> parent of 964786e (Se arreglo la gravedaa)
     m_HeightFromFeet: 0
     m_Mirror: 0
   m_EditorCurves:
