@@ -10,12 +10,15 @@ public class ArrowCollision : MonoBehaviour
 	private float timePass;
 	private float maxTimeArrow = 5;
 	private void OnCollisionEnter(Collision other) {
-		Debug.Log(other.gameObject.name);
-		if(!other.gameObject.name.Equals("Player")){
+		if(other.gameObject.CompareTag("Enemy")){
 			//var expl = Instantiate(effectOnHit, transform.position, Quaternion.identity);
-			// only arrows accepted 
 			//Destroy(expl,effectDuration); // delete the explosion after 3 seconds
+			Destroy(other.gameObject);
 			Destroy(gameObject);
+		}else{
+        	GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        	GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+			Debug.Log(other.gameObject.name);
 		}
 	}
 

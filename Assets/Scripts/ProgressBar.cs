@@ -5,8 +5,8 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class ProgressBar : MonoBehaviour
 {
-    [SerializeField] public int maximum;
-    [SerializeField] public int current;
+    [SerializeField] public float maximum;
+    [SerializeField] public float current;
     private float fillSmoothness = 0.001f;
 
     [SerializeField] Image mask;
