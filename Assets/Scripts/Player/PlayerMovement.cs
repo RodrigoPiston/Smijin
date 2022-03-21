@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Camera cameraPlayer;
     [SerializeField] public float speed = 6f;
-    //[SerializeField] float angleRotation = 45;
-    //[SerializeField] float turnSmoothTime = 0.1f;
-    //[SerializeField] float yMove = 0.1f;
+    private Camera cameraPlayer;
+    private CinemachineVirtualCamera virtualCamera;
+    private CinemachineComponentBase componentBase;
     private CharacterController crPlayer; 
     private Vector3 target;
     private Vector3 moveDirection;
@@ -20,10 +20,19 @@ public class PlayerMovement : MonoBehaviour
     private float vSpeed;
     private float velocityX;
     private bool groundedPlayer;
-     
-    void Start(){
+    private float maxZoomOut = 18;
+    private float maxZoomIn = 5;
+    private float zoom = 13;
+
+    private void Awake() {
+        virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        cameraPlayer  = GameObject.Find("IsometricCamera").GetComponent<Camera>();
         crPlayer = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
+        componentBase = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+    } 
+
+    void Start(){
         if (GameManager.instancia.lastSP != 0)
         {
             transform.position = FindObjectOfType<SavePointsManager>().GetSavePoint(GameManager.instancia.lastSP).position;
@@ -42,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         Animate();
         ApplyGravity();
         Move();
-
+        ZoomCamera();
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject score = GetComponent<InventoryManager>().GetInventoryOne();
@@ -89,6 +98,18 @@ public class PlayerMovement : MonoBehaviour
             target = hitInfo.point;
             target.y = transform.position.y;
             transform.LookAt(target);
+        }
+    }
+
+    private void ZoomCamera()
+    {
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel") * -1;
+        if ((scrollWheel < 0 && zoom > maxZoomIn ) || (scrollWheel > 0 &&  zoom < maxZoomOut ) ) // forward
+        {
+            zoom += scrollWheel * 10;
+        }
+        if (componentBase is CinemachineFramingTransposer){
+            (componentBase as CinemachineFramingTransposer).m_CameraDistance = zoom ; 
         }
     }
 }
