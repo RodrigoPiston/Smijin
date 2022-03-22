@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Ray ray;
     private float gravity = -9.8f;
     private float velocityZ;
-    private float vSpeed;
     private float velocityX;
+    private float vSpeed;
     private bool groundedPlayer;
     private float maxZoomOut = 18;
     private float maxZoomIn = 5;

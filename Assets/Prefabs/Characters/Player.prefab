@@ -473,8 +473,8 @@ GameObject:
   - component: {fileID: 439278}
   - component: {fileID: 9581944}
   - component: {fileID: 4515160243444776054}
-  - component: {fileID: 8376177988133700487}
   - component: {fileID: 450265700445638352}
+  - component: {fileID: 8029410933315642978}
   - component: {fileID: 6696164672480892331}
   m_Layer: 0
   m_Name: Player
@@ -532,24 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd862ac76b2d694cbcfcf9ae914701f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPlayer: {fileID: 0}
-  movementSpeed: 10
---- !u!114 &8376177988133700487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9ef8c50fffc6d499187017f50ae293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 149964, guid: 3328d5d74c357064087a925505b79caf, type: 3}
-  shootPoint: {fileID: 2133238436876374680}
-  cooldown: 0.2
-  arrowPower: 20
+  speed: 6
 --- !u!114 &450265700445638352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +545,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3967a15c5376984194e274d4dff7c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8029410933315642978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e358e823b258e44a9633ab87842ba12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 1531814124222292, guid: 663161ea4a2607e43aaaf82d0af01055, type: 3}
+  shootPoint: {fileID: 2133238436876374680}
+  cooldown: 0.4
+  arrowPower: 20
 --- !u!114 &6696164672480892331
 MonoBehaviour:
   m_ObjectHideFlags: 0

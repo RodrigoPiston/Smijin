@@ -3105,7 +3105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 1}
   speed: 2
-  shootPoint: {fileID: 0}
 --- !u!1 &172642
 GameObject:
   m_ObjectHideFlags: 0
