@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float speed = 6f;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float maxZoomOut = 18;
+    [SerializeField] private float maxZoomIn = 5;
+    [SerializeField] private float zoom = 13;
+    [SerializeField] private GameObject trailOnDash;
+    [SerializeField] public GameObject trailPoint;
+
+    private GameObject trailOnDashInstance;
+
     private Camera cameraPlayer;
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineComponentBase componentBase;
@@ -20,9 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private float velocityX;
     private float vSpeed;
     private bool groundedPlayer;
-    private float maxZoomOut = 18;
-    private float maxZoomIn = 5;
-    private float zoom = 13;
+    private float normalSpeed;
 
     private void Awake() {
         virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
@@ -30,6 +33,14 @@ public class PlayerMovement : MonoBehaviour
         crPlayer = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
         componentBase = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+        trailPoint = GameObject.Find("TrailPoint");
+
+        trailOnDashInstance = Instantiate(trailOnDash, 
+                        trailPoint.gameObject.transform.position, 
+                        trailPoint.gameObject.transform.rotation) as GameObject;
+        trailOnDashInstance.transform.parent = trailPoint.transform;
+        trailOnDashInstance.gameObject.SetActive(false);
+
     } 
 
     void Start(){
@@ -37,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = FindObjectOfType<SavePointsManager>().GetSavePoint(GameManager.instancia.lastSP).position;
         }
+        normalSpeed = speed;
     }
 
     void Update()
@@ -112,4 +124,25 @@ public class PlayerMovement : MonoBehaviour
             (componentBase as CinemachineFramingTransposer).m_CameraDistance = zoom ; 
         }
     }
+
+    public Vector3 GetMoveDirection(){
+        return moveDirection;
+    }
+
+    public float GetSpeed(){
+        return speed;
+    }
+
+    public void SetSpeed(float newSpeed){
+        speed = newSpeed;
+    }
+
+    public float GetNormalSpeed(){
+        return normalSpeed;
+    }
+
+    public void SetTrailDashState(bool state){
+        trailOnDashInstance.gameObject.SetActive(state);
+    }
+
 }
