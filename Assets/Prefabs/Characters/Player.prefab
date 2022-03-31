@@ -475,7 +475,6 @@ GameObject:
   - component: {fileID: 4515160243444776054}
   - component: {fileID: 450265700445638352}
   - component: {fileID: 8029410933315642978}
-  - component: {fileID: 6696164672480892331}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -569,22 +568,6 @@ MonoBehaviour:
   MaxLength: 0
   cooldown: 0.4
   arrowPower: 20
---- !u!114 &6696164672480892331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee2149c553fe0f419460b92b418a6b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 100
-  maxLife: 100
-  energy: 100
-  maxEnergy: 100
 --- !u!1 &130074
 GameObject:
   m_ObjectHideFlags: 0

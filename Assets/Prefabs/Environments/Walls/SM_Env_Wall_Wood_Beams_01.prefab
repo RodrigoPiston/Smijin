@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 482504}
   - component: {fileID: 3399648}
   - component: {fileID: 2371826}
+  - component: {fileID: 7427705556166121352}
   m_Layer: 0
   m_Name: SM_Env_Wall_Wood_Beams_01
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7427705556166121352
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 0652651a5a11a2949ba9bda58535ee04, type: 3}

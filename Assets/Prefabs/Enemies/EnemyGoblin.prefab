@@ -743,11 +743,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95e3badb68ead8478a32f69f0c3e262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  health: 10
+  speed: 12
   soulsDrop: 15
-  detectionRange: 7
-  attackRange: 2
+  detectionRange: 25
+  attackRange: 4
+  characterStatus: {fileID: 0}
 --- !u!143 &1820761661569205293
 CharacterController:
   m_ObjectHideFlags: 0
@@ -759,10 +759,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.77
-  m_Radius: 0.32
-  m_SlopeLimit: 45
-  m_StepOffset: 0.5
+  m_Height: 2
+  m_Radius: 0.28
+  m_SlopeLimit: 180
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}

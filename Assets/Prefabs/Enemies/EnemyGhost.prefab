@@ -1078,10 +1078,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  health: 2
   soulsDrop: 4
-  detectionRange: 15
-  attackRange: 5
+  detectionRange: 25
+  attackRange: 6
+  characterStatus: {fileID: 0}
+  ability: {fileID: 0}
 --- !u!143 &5578765462287628341
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1093,10 +1094,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.77
-  m_Radius: 0.32
+  m_Height: 2
+  m_Radius: 1
   m_SlopeLimit: 45
-  m_StepOffset: 0.5
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}

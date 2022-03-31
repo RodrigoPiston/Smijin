@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 456150}
   - component: {fileID: 3332388}
   - component: {fileID: 2384208}
+  - component: {fileID: -2597191036107844668}
   m_Layer: 0
   m_Name: SM_Env_Stalagmite_06
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2597191036107844668
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b4e26ffaa3681c44fbee91d8c062e144, type: 3}

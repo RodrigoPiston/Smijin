@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 454930}
   - component: {fileID: 3398792}
   - component: {fileID: 2320964}
-  m_Layer: 0
+  - component: {fileID: 1175891035925019236}
+  m_Layer: 30
   m_Name: SM_Env_Wall_01_DoubleSided
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1175891035925019236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.1665874, y: 5.168559, z: 0.544922}
+  m_Center: {x: -2.4734044, y: 2.5289917, z: 0.0000009536743}

@@ -6,8 +6,10 @@ public class PlayerStatusManager : MonoBehaviour
 {
 
     [Header("Player")]
-    [SerializeField] private CharacterStatus playerStatus;
+    [SerializeField] private CharacterStatus characterStatus;
     public static PlayerStatusManager instance;
+    private GameObject lifeBar;
+    private GameObject energyBar;
 
     void Awake()
     {
@@ -20,19 +22,45 @@ public class PlayerStatusManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        characterStatus.hp = characterStatus.baseHp;
+
     }
-    public void UpdateCharacterStatus(Equipment newItem, Equipment oldItem)
+
+    public void UpdateCharacterStatusItem(Equipment newItem, Equipment oldItem)
     {
         if (oldItem != null)
         {
-            playerStatus.str -= oldItem.strengthModifier;
-            playerStatus.def -= oldItem.defenseModifier;
-            playerStatus.mgc -= oldItem.magicModifier;
-            playerStatus.mgcdef -= oldItem.magicdefenseModifier;
+            characterStatus.strength -= oldItem.strengthModifier;
+            characterStatus.defense -= oldItem.defenseModifier;
+            characterStatus.magic    -= oldItem.magicModifier;
+            characterStatus.magicDefense -= oldItem.magicdefenseModifier;
         }
-        playerStatus.str = playerStatus.basestr + newItem.strengthModifier;
-        playerStatus.def = playerStatus.basedef + newItem.defenseModifier;
-        playerStatus.mgc = playerStatus.basemgc + newItem.magicModifier;
-        playerStatus.mgcdef = playerStatus.basemgcdef + newItem.magicdefenseModifier;
+        characterStatus.strength = characterStatus.baseStrength + newItem.strengthModifier;
+        characterStatus.defense = characterStatus.baseDefense + newItem.defenseModifier;
+        characterStatus.magic = characterStatus.baseMagic + newItem.magicModifier;
+        characterStatus.magicDefense = characterStatus.baseMagicDefense + newItem.magicdefenseModifier;
     }
+
+    public void UpdateCharacterStatusLife(int ammount)
+    {
+        characterStatus.hp += ammount;
+    }
+
+    public void UpdateCharacterStatusMana(int ammount)
+    {
+        characterStatus.mp += ammount;
+    }
+
+    void Start()
+    {
+        lifeBar =  GameObject.FindWithTag("LifeBar");
+        energyBar = GameObject.FindWithTag("EnergyBar");
+    }
+
+    void Update()
+    {
+        lifeBar.GetComponent<ProgressBar>().current = (int)this.characterStatus.hp;
+        energyBar.GetComponent<ProgressBar>().current = (int)this.characterStatus.mp;
+    }
+
 }

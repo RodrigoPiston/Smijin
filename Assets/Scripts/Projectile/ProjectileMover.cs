@@ -16,6 +16,7 @@ public class ProjectileMover : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         if (flash != null)
         {
             var flashInstance = Instantiate(flash, transform.position, Quaternion.identity);
@@ -31,19 +32,18 @@ public class ProjectileMover : MonoBehaviour
                 Destroy(flashInstance, flashPsParts.main.duration);
             }
         }
-        Destroy(gameObject,5);
-	}
+        Destroy(gameObject, 5);
+    }
 
-    void FixedUpdate ()
+    void FixedUpdate()
     {
-		if (speed != 0)
+        if (speed != 0)
         {
             rb.velocity = transform.forward * speed;
             //transform.position += transform.forward * (speed * Time.deltaTime);         
         }
-	}
+    }
 
-    //https ://docs.unity3d.com/ScriptReference/Rigidbody.OnCollisionEnter.html
     void OnCollisionEnter(Collision collision)
     {
         //Lock all axes movement and rotation
@@ -57,9 +57,13 @@ public class ProjectileMover : MonoBehaviour
         if (hit != null)
         {
             var hitInstance = Instantiate(hit, pos, rot);
-            if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
-            else if (rotationOffset != Vector3.zero) { hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); }
-            else { hitInstance.transform.LookAt(contact.point + contact.normal); }
+            if (UseFirePointRotation) { 
+                hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); 
+            }else if (rotationOffset != Vector3.zero) { 
+                hitInstance.transform.rotation = Quaternion.Euler(rotationOffset); 
+            }else { 
+                hitInstance.transform.LookAt(contact.point + contact.normal); 
+            }
 
             var hitPs = hitInstance.GetComponent<ParticleSystem>();
             if (hitPs != null)

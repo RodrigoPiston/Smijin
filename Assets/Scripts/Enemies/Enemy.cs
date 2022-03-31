@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected float speed = 2f;
-    [SerializeField] protected int health = 5;
     [SerializeField] protected int soulsDrop = 1;
     [SerializeField] protected float detectionRange = 10f;
     [SerializeField] protected float attackRange = 5f;
+    [SerializeField] protected CharacterStatus characterStatus;
 
     protected bool isGrounded;
     protected float vSpeed;
@@ -19,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
     protected float velocityZ;
     protected float velocityX;
     private float gravity = -9.8f;
-    
+  
     public virtual void Deffend(){}
     
     public virtual void Move(){

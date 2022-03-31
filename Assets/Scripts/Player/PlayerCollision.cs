@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PlayerCollision : MonoBehaviour 
 {
+	private PlayerStatusManager playerStatusManager;
+
+	[SerializeField] private UnityEvent hitEvent; 
+
+	private void Start() {
+	}
 	private void OnControllerColliderHit(ControllerColliderHit hit) {
 		Debug.Log($"{hit.gameObject.tag}");
 		
 		if(hit.gameObject.CompareTag("Enemy")){
-			this.GetComponentInParent<PlayerManager>().Hurt(1);
+			PlayerStatusManager.instance.UpdateCharacterStatusLife(-1);
+			hitEvent?.Invoke();
 		}else if(hit.gameObject.CompareTag("Healing")){
-			this.GetComponentInParent<PlayerManager>().Heal(1);
+			PlayerStatusManager.instance.UpdateCharacterStatusLife(1);
 		}
 	}
 

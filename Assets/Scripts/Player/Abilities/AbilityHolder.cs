@@ -12,13 +12,14 @@ public class AbilityHolder : MonoBehaviour
 
     AbilityState state = AbilityState.READY;
     public KeyCode key;
+    public bool execute = false;
 
     public void Update()
     {
         switch (state)
         {
             case AbilityState.READY:
-                if(Input.GetKeyDown(key)){
+                if(Input.GetKeyDown(key) || execute){
                     ability.Activate(gameObject.transform.parent.gameObject);
                     state = AbilityState.ACTIVE;
                     activeTime = ability.activeTime;

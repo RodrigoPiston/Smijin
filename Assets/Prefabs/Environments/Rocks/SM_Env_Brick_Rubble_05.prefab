@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 446882}
   - component: {fileID: 3398082}
   - component: {fileID: 2327456}
+  - component: {fileID: -2323418464227953410}
   m_Layer: 0
   m_Name: SM_Env_Brick_Rubble_05
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2323418464227953410
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 10ac9ef77cf43c146b5132ba220ab697, type: 3}

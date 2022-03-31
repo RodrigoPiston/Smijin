@@ -5,20 +5,20 @@ public class CharacterStatus : ScriptableObject
 {
     public string charName = "name";
     public int level      = 1;
-    public int basemaxhp  = 0;
-    public int basemaxmp  = 0;
-    public int basehp     = 0;
-    public int basemp     = 0;
-    public int basestr    = 0;
-    public int basedef    = 0;
-    public int basemgc    = 0;
-    public int basemgcdef = 0;
-    public int maxhp      = 0;
-    public int maxmp      = 0;
+    public int baseMaxHp  = 0;
+    public int baseMaxMp  = 0;
+    public int baseHp     = 0;
+    public int baseMp     = 0;
+    public int baseStrength    = 0;
+    public int baseDefense    = 0;
+    public int baseMagic       = 0;
+    public int baseMagicDefense = 0;
+    public int maxHp      = 0;
+    public int maxMp      = 0;
     public int hp         = 0;
     public int mp         = 0;
-    public int str        = 0;
-    public int def        = 0;
-    public int mgc        = 0;
-    public int mgcdef     = 0;
+    public int strength   = 0;
+    public int defense   = 0;
+    public int magic      = 0;
+    public int magicDefense     = 0;
 }

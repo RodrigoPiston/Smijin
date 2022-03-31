@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 496344}
   - component: {fileID: 3391770}
   - component: {fileID: 2378912}
+  - component: {fileID: 9219877426877979464}
   m_Layer: 0
   m_Name: SM_Env_Rune_Square_02
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9219877426877979464
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 19ada8c57dbf06f499d6e9c823d372fb, type: 3}

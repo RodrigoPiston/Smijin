@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 424588}
   - component: {fileID: 3313710}
   - component: {fileID: 2341282}
+  - component: {fileID: 3073452142083736961}
   m_Layer: 0
   m_Name: SM_Env_Rock_Spike_01
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3073452142083736961
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: f8606f308b8c1be46b3c7405e29ea418, type: 3}

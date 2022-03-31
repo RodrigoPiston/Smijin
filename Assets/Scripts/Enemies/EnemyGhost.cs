@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyGhost : Enemy
 {
+    [SerializeField] private AbilityHolder ability;
     
     void Start()
     {
@@ -25,7 +26,8 @@ public class EnemyGhost : Enemy
 
     public override void Attack()
     {
-        base.Attack();
+        Debug.Log("Atacando al player");
+        //ability.execute = true;
     }
 
     public override void Deffend()
@@ -40,7 +42,13 @@ public class EnemyGhost : Enemy
 
     public override void Move()
     {
-        base.Move();
+        moveDirection = (player.transform.position - transform.position);
+        if (moveDirection.magnitude > 10 && moveDirection.magnitude < detectionRange)
+        {
+            crController.Move(speed * moveDirection.normalized * Time.deltaTime);
+        }else if(moveDirection.magnitude > 10 && moveDirection.magnitude < 11){
+            Attack();
+        }
     }
 
 }

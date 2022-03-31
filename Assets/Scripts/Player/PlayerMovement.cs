@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Cinemachine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private float normalSpeed;
 
     private void Awake() {
-        virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        try{
+            virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         cameraPlayer  = GameObject.Find("IsometricCamera").GetComponent<Camera>();
         crPlayer = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
@@ -40,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
                         trailPoint.gameObject.transform.rotation) as GameObject;
         trailOnDashInstance.transform.parent = trailPoint.transform;
         trailOnDashInstance.gameObject.SetActive(false);
+        }catch(Exception e){
 
+        }
     } 
 
     void Start(){

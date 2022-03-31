@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 474024}
   - component: {fileID: 3336298}
   - component: {fileID: 2311648}
+  - component: {fileID: -6641119825714960612}
   m_Layer: 0
   m_Name: SM_Env_Rock_Flat_Platform_06
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-6641119825714960612
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 39b0c118c86ce2b409556383521479bf, type: 3}

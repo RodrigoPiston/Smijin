@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 409478}
   - component: {fileID: 3335458}
   - component: {fileID: 2388852}
+  - component: {fileID: 2868756848177220366}
   m_Layer: 0
   m_Name: SM_Env_Rune_Pillar_04
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2868756848177220366
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: dc6f0d907f4c53842b1eabc4b9b33eaa, type: 3}

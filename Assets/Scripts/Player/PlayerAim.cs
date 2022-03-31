@@ -29,11 +29,10 @@ public class PlayerAim : MonoBehaviour
     private Ray RayMouse;
     private Vector3 direction;
     private Quaternion rotation;
-
     void Start()
     {
         newParentObject = GameObject.Find("DynamicArrows");
-
+  
         if (Screen.dpi < 1) windowDpi = 1;
         if (Screen.dpi < 200) windowDpi = 1;
         else windowDpi = Screen.dpi / 200f;
@@ -65,7 +64,7 @@ public class PlayerAim : MonoBehaviour
     //GUI Text
     void OnGUI()
     {
-        GUI.Label(new Rect(10 * windowDpi, 65 * windowDpi, 400 * windowDpi, 20 * windowDpi), "Use the keyboard buttons Q/<- and E/-> to change projectiles!");
+        //GUI.Label(new Rect(10 * windowDpi, 65 * windowDpi, 400 * windowDpi, 20 * windowDpi), "Use the keyboard buttons Q and E to change projectiles!");
     }
 
     private void ShootArrow()
@@ -109,8 +108,6 @@ public class PlayerAim : MonoBehaviour
     {
         Instantiate(projectiles[projectile], shootPoint.transform.position, shootPoint.transform.rotation);
     }
-
-  
 
     private void OnDrawGizmos() 
     {

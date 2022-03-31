@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 412536}
   - component: {fileID: 3310652}
   - component: {fileID: 2303108}
+  - component: {fileID: 5856561975956844687}
   m_Layer: 0
   m_Name: SM_Env_Rock_Flat_Large_03
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5856561975956844687
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: bd9196c102555e046a5989d408f5f1af, type: 3}
