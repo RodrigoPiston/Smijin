@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 6f;
     [SerializeField] private float maxZoomOut = 18;
     [SerializeField] private float maxZoomIn = 5;
-    [SerializeField] private float zoom = 13;
+    [SerializeField] private float zoom = 13f;
     [SerializeField] private GameObject trailOnDash;
     [SerializeField] public GameObject trailPoint;
 
@@ -48,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
     } 
 
     void Start(){
-        if (GameManager.instancia.lastSP != 0)
+        /*if (GameManager.instancia.lastSP != 0)
         {
             transform.position = FindObjectOfType<SavePointsManager>().GetSavePoint(GameManager.instancia.lastSP).position;
-        }
-        normalSpeed = speed;
+        }*/
+        normalSpeed = speed; 
     }
 
     void Update()

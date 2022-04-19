@@ -17,6 +17,10 @@ public class ParticleCollisionInstance : MonoBehaviour
     private List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
     private ParticleSystem ps;
 
+    private GameObject player;
+
+    [SerializeField] AudioClip audioClip;
+
     void Start()
     {
         part = GetComponent<ParticleSystem>();
@@ -45,6 +49,13 @@ public class ParticleCollisionInstance : MonoBehaviour
         {
             Destroy(gameObject, DestroyTimeDelay + 0.5f);
             if(other.gameObject.CompareTag("Enemy")){
+                player = GameObject.FindGameObjectWithTag("Player");
+
+                /*AudioSource shot = player.GetComponent<AudioSource>();
+                shot.enabled = true;
+                shot.PlayOneShot(audioClip, 0.5f);*/
+
+                GameManager.instancia.EnemiesKilled();
                 Destroy(other.gameObject);
             }
         }

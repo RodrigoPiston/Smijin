@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyGhost : Enemy
 {
     [SerializeField] private AbilityHolder ability;
-    
+    [SerializeField] private float minPlayerDistance = 16f;
+    private float currPlayerDistance;
+
     void Start()
     {
         this.player = GameObject.Find("Player");
@@ -14,9 +16,19 @@ public class EnemyGhost : Enemy
 
     void Update()
     {
-        LookAtPlayer();
-        Move();
-        Attack();
+        Vector3 v3PlayerDistance = player.transform.position - transform.position;
+        currPlayerDistance = v3PlayerDistance.magnitude;
+
+        if (currPlayerDistance <= minPlayerDistance)
+        {
+            LookAtPlayer();
+            Move();
+            Attack();
+        }
+        else
+        {
+            base.WayPoint_Movement();
+        }
     }
 
     public override void Animate()
@@ -43,11 +55,13 @@ public class EnemyGhost : Enemy
     public override void Move()
     {
         moveDirection = (player.transform.position - transform.position);
-        if (moveDirection.magnitude > 10 && moveDirection.magnitude < detectionRange)
+        if (moveDirection.magnitude > 1 && moveDirection.magnitude < detectionRange)
         {
             crController.Move(speed * moveDirection.normalized * Time.deltaTime);
-        }else if(moveDirection.magnitude > 10 && moveDirection.magnitude < 11){
-            Attack();
+        }
+        else if (moveDirection.magnitude > 10 && moveDirection.magnitude < 11)
+        {
+            Attack(); 
         }
     }
 

@@ -10,9 +10,7 @@ public class PlayerCollision : MonoBehaviour
 
 	private void Start() {
 	}
-	private void OnControllerColliderHit(ControllerColliderHit hit) {
-		Debug.Log($"{hit.gameObject.tag}");
-		
+	private void OnControllerColliderHit(ControllerColliderHit hit) {		
 		if(hit.gameObject.CompareTag("Enemy")){
 			PlayerStatusManager.instance.UpdateCharacterStatusLife(-1);
 			hitEvent?.Invoke();
@@ -27,7 +25,7 @@ public class PlayerCollision : MonoBehaviour
 		{
 			// -- No se destruye ya que si queremos utilizar los gameobject en memoria no se guardan xd
 			GameObject score = other.gameObject; 
-			score.SetActive(false); 
+			score.SetActive(false);
 			GameManager.instancia.partsObtained++;
 			//GetComponent<InventoryManager>().AddInventoryOne(score);  
 		}

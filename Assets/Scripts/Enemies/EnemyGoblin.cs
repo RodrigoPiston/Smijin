@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyGoblin : Enemy
 {
+    private float minPlayerDistance = 16f, currPlayerDistance;
+
     void Start()
     {
         this.player = GameObject.Find("Player");
@@ -14,10 +16,21 @@ public class EnemyGoblin : Enemy
     void Update()
     {
         CheckIfGrounded();
-        LookAtPlayer();
-        Move();
-        Animate();
-        Attack();
+
+        Vector3 v3PlayerDistance = player.transform.position - transform.position;
+        currPlayerDistance = v3PlayerDistance.magnitude;
+
+        if (currPlayerDistance<= minPlayerDistance)
+        {
+            LookAtPlayer();
+            Move();
+            Attack();
+        }
+        else
+        {   
+            base.WayPoint_Movement();
+        }
+        Animate();        
     }
 
     public override void CheckIfGrounded()
@@ -45,7 +58,7 @@ public class EnemyGoblin : Enemy
         base.LookAtPlayer();
     }
 
-    public override void Move()
+    public override void Move() 
     {
         base.Move();
     }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyHuman : Enemy
 {
+    [SerializeField] private float minPlayerDistance = 16f;
+    private float currPlayerDistance;
+
     void Start()
     {
         this.player = GameObject.Find("Player");
@@ -13,11 +16,21 @@ public class EnemyHuman : Enemy
 
     void Update()
     {
+        Vector3 v3PlayerDistance = player.transform.position - transform.position;
+        currPlayerDistance = v3PlayerDistance.magnitude;
+
         CheckIfGrounded();
-        LookAtPlayer();
-        Move();
+        if (currPlayerDistance <= minPlayerDistance)
+        {
+            LookAtPlayer();
+            Move();
+            Attack(); 
+        }
+        else
+        {
+            base.WayPoint_Movement();
+        }
         Animate();
-        Attack();
     }
 
     public override void CheckIfGrounded()

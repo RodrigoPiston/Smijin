@@ -53,7 +53,7 @@ public class PlayerAim : MonoBehaviour
             buttonSaver = 0f;
             Counter(-1);
         }
-        if ((Input.GetKey(KeyCode.E)) && buttonSaver >= 0.4f)// right button
+        if ((Input.GetKey(KeyCode.Y)) && buttonSaver >= 0.4f)// right button
         {
             buttonSaver = 0f;
             Counter(+1);

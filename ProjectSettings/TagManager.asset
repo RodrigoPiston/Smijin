@@ -11,6 +11,7 @@ TagManager:
   - Healing
   - Score
   - SavePoint
+  - Generador
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Example_Night");
     }
 
     public void LoadOptions(){

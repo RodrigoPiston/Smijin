@@ -743,11 +743,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95e3badb68ead8478a32f69f0c3e262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 4
   soulsDrop: 15
   detectionRange: 25
-  attackRange: 4
+  attackRange: 2
+  hp: 0
   characterStatus: {fileID: 0}
+  wayPointName: 
 --- !u!143 &1820761661569205293
 CharacterController:
   m_ObjectHideFlags: 0

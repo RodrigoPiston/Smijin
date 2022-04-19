@@ -7,12 +7,19 @@ public class ProjectileCollision : MonoBehaviour
 	[SerializeField] public GameObject effectOnHit ;
 	[SerializeField] public  float effectDuration = 2f ;
 
-	private float timePass;
+    private void Start()
+    {
+
+    }
+
+    private float timePass;
 	private float maxTimeProjectile = 5;
 	private void OnCollisionEnter(Collision other) {
-		Debug.Log(other.gameObject.name);
+		
 		if(other.gameObject.CompareTag("Enemy")){
-			Destroy(other.gameObject);
+			GameManager.instancia.EnemiesKilled();
+			Destroy(other.gameObject); 
+			
 		}
 	}
 
