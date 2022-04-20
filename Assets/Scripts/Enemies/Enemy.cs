@@ -33,9 +33,9 @@ public abstract class Enemy : MonoBehaviour
 
     void Awake()
     {
-        wayPointName = GetComponentInParent<LowEnemyGenerator>().GetWayPointName();
-        if (wayPointName != "Boss")
+        if (this.gameObject.name != "CegadorAlmas") 
         {
+            wayPointName = GetComponentInParent<LowEnemyGenerator>().GetWayPointName();
             WayPointMovement waypointContainer = GameObject.Find(wayPointName).gameObject.GetComponent<WayPointMovement>();
             wayPoints = waypointContainer.GetWayPoints(); 
         }

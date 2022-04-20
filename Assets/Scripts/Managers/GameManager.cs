@@ -50,8 +50,7 @@ public class GameManager : MonoBehaviour
         if (enemiesKilled>=enemiesRequired)
         {
             evento3 = true;
-            boss.gameObject.SetActive(true);
-            boss.GetComponent<CapsuleCollider>().enabled = true;
+            boss.gameObject.SetActive(true);           
         }
 
     }

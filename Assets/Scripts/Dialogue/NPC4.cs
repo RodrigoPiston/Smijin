@@ -31,17 +31,17 @@ public class NPC4 : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (GameManager.instancia.evento3)
+        if (GameManager.instancia.evento3 && (other.gameObject.tag == "Player"))
         {
-            this.gameObject.GetComponent<NPC4>().enabled = true;
+            this.gameObject.GetComponent<NPC4>().enabled = true; 
             FindObjectOfType<DialogueSystem>().EnterRangeOfNpc();
+
             if ((other.gameObject.tag == "Player") && Input.GetKeyDown(KeyCode.E))
-            {
+            {               
                 this.gameObject.GetComponent<NPC4>().enabled = true;
                 dialogueSystem.Names = Name;
                 dialogueSystem.dialogueLines = sentences;
                 FindObjectOfType<DialogueSystem>().NPCName();
-                GameManager.instancia.Evento2();
             }
             else
             {
@@ -54,5 +54,8 @@ public class NPC4 : MonoBehaviour
     {
         FindObjectOfType<DialogueSystem>().OutOfRange();
         this.gameObject.GetComponent<NPC4>().enabled = false;
+        this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        this.gameObject.GetComponent<EnemyHuman>().enabled = true;
+
     }
 }

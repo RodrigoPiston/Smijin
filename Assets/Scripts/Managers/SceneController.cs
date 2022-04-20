@@ -10,9 +10,9 @@ public class SceneController : MonoBehaviour
         menuManager = GameObject.Find("MenuManager").GetComponent<MenuManger>();
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName) 
     {
-        SceneManager.LoadScene("Example_Night");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void LoadOptions(){
