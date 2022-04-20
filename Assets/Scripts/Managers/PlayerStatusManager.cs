@@ -10,7 +10,7 @@ public class PlayerStatusManager : MonoBehaviour
     public static PlayerStatusManager instance;
     private GameObject lifeBar;
     private GameObject energyBar;
-
+    private DeathController deathController;
     void Awake()
     {
         if (instance == null)
@@ -23,7 +23,7 @@ public class PlayerStatusManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         characterStatus.hp = characterStatus.baseHp;
-
+        deathController = new DeathController();
     }
 
     public void UpdateCharacterStatusItem(Equipment newItem, Equipment oldItem)
@@ -44,6 +44,11 @@ public class PlayerStatusManager : MonoBehaviour
     public void UpdateCharacterStatusLife(int ammount)
     {
         characterStatus.hp += ammount;
+        if(characterStatus.hp <= 0)
+        {
+            // deathController.LoadDeathScreen(true);
+            Debug.Log("Estas muerto");
+        }
     }
 
     public void UpdateCharacterStatusMana(int ammount)

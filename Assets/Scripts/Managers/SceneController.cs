@@ -24,7 +24,7 @@ public class SceneController : MonoBehaviour
         menuManager.GetFrameMainMenu().gameObject.SetActive(true);
         menuManager.GetFrameOptions().gameObject.SetActive(false);
     }
-    
+
     public void Exit()
     {
         Application.Quit();

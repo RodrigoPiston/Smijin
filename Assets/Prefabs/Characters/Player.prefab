@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 439278}
   - component: {fileID: 9581944}
   - component: {fileID: 4515160243444776054}
+  - component: {fileID: 8713680806767750085}
   - component: {fileID: 450265700445638352}
   - component: {fileID: 8029410933315642978}
   m_Layer: 0
@@ -539,6 +540,25 @@ MonoBehaviour:
   zoom: 13
   trailOnDash: {fileID: 0}
   trailPoint: {fileID: 0}
+--- !u!114 &8713680806767750085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9db670c1df4bb2843b82560ce5409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 9abce3e87c5b94d899d1dbbdc1b9a2ff, type: 3}
+  size: {x: 20, y: 20}
+  rotateWithObject: 0
+  upAxis: {x: 0, y: 1, z: 0}
+  initialIconRotation: 0
+  clampIconInBorder: 1
+  clampDistance: 100
 --- !u!114 &450265700445638352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3967a15c5376984194e274d4dff7c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8029410933315642978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2079,6 +2102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
   key: 0
+  execute: 0
 --- !u!114 &7923263470669056588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,6 +2117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
   key: 0
+  execute: 0
 --- !u!114 &6333246467923186591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2107,6 +2132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 0}
   key: 0
+  execute: 0
 --- !u!1 &7222044998329132880
 GameObject:
   m_ObjectHideFlags: 0

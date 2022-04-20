@@ -50,7 +50,11 @@ public class GameManager : MonoBehaviour
         if (enemiesKilled>=enemiesRequired)
         {
             evento3 = true;
-            boss.gameObject.SetActive(true);           
+
+            if (evento1 && evento2 && evento3)
+            {
+                boss.gameObject.SetActive(true);
+            }
         }
 
     }
